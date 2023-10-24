@@ -13,6 +13,7 @@ public class Validator {
 
     public static void checkBallInput(final String ballInput) {
         checkBallNumberLength(ballInput);
+        checkDuplicateBalls(checkBallNumberIsValidNumber(ballInput)
     }
 
     private static void checkBallNumberLength(final String ballInput) {
@@ -31,6 +32,12 @@ public class Validator {
 
     private static void checkStandardNumber(final String ball) {
         if (!STANDARD_NUMBER.contains(ball)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void checkDuplicateBalls(final List<String> balls) {
+        if (MAX_SIZE != new HashSet<>(balls).size()) {
             throw new IllegalArgumentException();
         }
     }
