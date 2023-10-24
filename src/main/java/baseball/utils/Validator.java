@@ -21,4 +21,18 @@ public class Validator {
         }
     }
 
+    private static List<String> checkBallNumberIsValidNumber(final String userBallInput) {
+        List<String> splitUserBall = Arrays.asList(userBallInput.split(""));
+        for (String ball : splitUserBall) {
+            checkStandardNumber(ball);
+        }
+        return splitUserBall;
+    }
+
+    private static void checkStandardNumber(final String ball) {
+        if (!STANDARD_NUMBER.contains(ball)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
